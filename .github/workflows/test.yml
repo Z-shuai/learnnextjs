@@ -16,17 +16,22 @@
 #           cd ~
 #           mkdir heihei
 
-name: ssh command
-on: push
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  ssh:
+    runs-on: ubuntu-22.04
     steps:
-      - id: ssh
-        uses: invi5H/ssh-action@v1
-        with:
-          SSH_HOST: ${{ secrets.HOST }}
-          SSH_PORT: ${{ secrets.PORT }}
-          SSH_USER: ${{ secrets.USERNAME }}
-          SSH_KEY: ${{ secrets.KEY }}
-      - run: ssh ${{ steps.ssh.outputs.SERVER }} "pwd"
+      - run: mkdir -p ~/.ssh
+      - run: echo "${{ secrets.KEY}}" > ~/.ssh/id_rsa
+      - run: chmod 600 ~/.ssh/id_rsa
+      - run: ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      - run: sudo apt-get install sshpass
+      - run: |
+          sshpass -p "${{secrets.PASSWORD}}" ssh -v -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} <<'ENDSSH'
+          cd ~
+          mkdir huohuo
+          ENDSSH
