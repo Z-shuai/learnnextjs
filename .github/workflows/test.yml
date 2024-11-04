@@ -10,6 +10,6 @@ jobs:
       - run: mkdir -p ~/.ssh
       - run: echo "${{ secrets.KEY}}" > ~/.ssh/id_rsa
       - run: chmod 600 ~/.ssh/id_rsa
-      - run: ssh-keyscan -p 22 ${{secrets.USERNAME}}@${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      - run: ssh-keyscan -p 22 root@${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - run: cd ~
       - run: mkdir haha
