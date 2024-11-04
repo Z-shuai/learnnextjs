@@ -1,0 +1,11 @@
+{
+  "name": "test-packege",
+  "version": "1.0.0",
+  "description": "hello world",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dengfang",
+  "license": "ISC"
+}
