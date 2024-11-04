@@ -11,6 +11,4 @@ jobs:
       - run: echo "${{ secrets.KEY}}" > ~/.ssh/id_rsa
       - run: chmod 600 ~/.ssh/id_rsa
       - run: ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-      - run: ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}}
-      - run: cd ~
-      - run: mkdir haha
+      - run: ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}} 'mkdir -p haha'
