@@ -31,3 +31,6 @@ jobs:
       - run: ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - run: |
           ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}} 'mkdir -p ~/jiji ; mkdir -p ~/huohuo'
+          cd ~
+          mkdir meimei
+          ls ~
