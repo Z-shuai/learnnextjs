@@ -17,7 +17,7 @@ jobs:
       - run: echo "${{ secrets.KEY}}" > ~/.ssh/id_rsa
       - run: chmod 600 ~/.ssh/id_rsa
       - run: ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-      - run: apt-get install rsync
+      - run: sudo apt-get install rsync
       - run: rsync -avz -e "ssh -i ~/.ssh/id_rsa" --exclude 'node_modules' ./package.json root@${{secrets.HOST}}:~
       - run: |
           ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}} 'mkdir -p ~/jiji ; mkdir -p ~/huohuo'
