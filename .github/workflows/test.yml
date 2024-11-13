@@ -19,4 +19,4 @@ jobs:
       - run: ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - run: rsync -avz -e "ssh -i ~/.ssh/id_rsa" --exclude 'node_modules' ./ root@${{secrets.HOST}}:~/project
       - run: |
-          ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}} ''
+          ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}} 'npm install;npm run dev'
