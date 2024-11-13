@@ -1,3 +1,21 @@
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   ssh:
+#     runs-on: ubuntu-22.04
+#     steps:
+#       - run: mkdir -p ~/.ssh
+#       - run: echo "${{ secrets.KEY}}" > ~/.ssh/id_rsa
+#       - run: chmod 600 ~/.ssh/id_rsa
+#       - run: ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+#       - run: |
+#           ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}}
+#           cd ~
+#           mkdir heihei
+
 on:
   push:
     branches:
