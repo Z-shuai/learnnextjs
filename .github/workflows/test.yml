@@ -30,6 +30,4 @@ jobs:
       - run: chmod 600 ~/.ssh/id_rsa
       - run: ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - run: |
-          ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}}
-          cd ~
-          mkdir heihei
+          ssh -i ~/.ssh/id_rsa root@${{secrets.HOST}} 'mkdir -p ~/heihei'
